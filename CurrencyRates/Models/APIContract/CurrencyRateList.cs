@@ -4,6 +4,6 @@ namespace CurrencyRates.Models
 {
     public class CurrencyRateList
     {
-        List<CurrencyRateItem> Items { get; set; } 
+        public List<CurrencyRateItem> Items { get; set; } 
     }
 }

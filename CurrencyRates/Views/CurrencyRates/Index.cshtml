@@ -1,7 +1,54 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Rates";
 }
 
-<h2>Index</h2>
+
+<div class="panel">
+    <form action="@Url.Action("RecalculateRates")" class="form-inline">
+        <label>Data</label>
+        <input id="data" name="data" value="@ViewBag.date" class="form-control input-sm"/>
+        <button type="submit">View</button>
+    </form>
+</div>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h4 class="text-center">@ViewBag.date</h4></div>
+    <div class="panel-body" style="height: 75vh;overflow-y: scroll;">
+        <table class="table table-bordered table-condensed table-striped">
+            @foreach (var x in ViewBag.rates)
+            {
+                <tr>
+                    <td>@x.Name</td>
+                    <td>
+                        @x.ChangeOfRate  @if (x.ChangeOfRate > 0)
+                        {
+                            <span class="glyphicon glyphicon-arrow-up text-success"></span>
+                        }
+                        @if (x.ChangeOfRate < 0)
+                        {
+                            <span class="glyphicon glyphicon-arrow-down text-danger"></span>
+                        }
+
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['lt']);
+            $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
+            $("#data").datepicker({ minDate: '-3Y', maxDate: new Date(2014, 11, 30) });
+        });
+</script>
+}
+
+
 

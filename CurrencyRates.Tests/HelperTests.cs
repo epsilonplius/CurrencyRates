@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
-using CurrencyRates.Controllers;
+using CurrencyRates.Models.LBContract;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestSharp;
 
@@ -36,6 +36,8 @@ namespace CurrencyRates.Tests
             Assert.IsNotNull(rates);
             Assert.IsNotNull(rates.item);
             Assert.IsTrue(rates.item.Any());
+
+            Console.WriteLine(rates.item.Count());
             
 
         }

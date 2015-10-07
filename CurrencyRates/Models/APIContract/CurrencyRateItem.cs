@@ -3,6 +3,6 @@
     public class CurrencyRateItem
     {
         public string Name { get; set; }
-        public int ChangeOfRate { get; set; }
+        public decimal ChangeOfRate { get; set; }
     }
 }
